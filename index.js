@@ -3,10 +3,12 @@ const cors = require("cors");
 const connect = require("./config/db")
 const app = express();
 const wordRouter = require("./routes/word.route")
+const userRouter = require("./routes/user")
 const PORT = 8080
 app.use(express.json());
 app.use(cors());
 app.use("/words", wordRouter)
+app.use("/users", userRouter)
 app.get("/", (req, res)=>{
     return res.send("Hello Its me salem")
 })

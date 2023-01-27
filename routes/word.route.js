@@ -3,16 +3,18 @@ const words = require("../models/word.model")
 const app = express.Router();
 
 app.get("/", async(req,res)=>{
-    let {word} = req.body;
-
-    let len= (word.length);
+    // let word = req.body;
+console.log(req.body);
+    // let len= (word.length);
     try{
-      let w = await words.findOne({word: word })
-      if(w){
-      return res.send({w, len})
-      }else{
-        return res.status(402).send("wrong")
-      }
+    //   let w = await words.findOne({word: word })
+    //   if(w){
+    //   return res.send("correct")
+    //   }else{
+    //     return res.send("wrong")
+    //   }
+    let w = await words.find()
+    return res.send(w)
     }catch(e){
       res.status(404).send(e.message);
     }
